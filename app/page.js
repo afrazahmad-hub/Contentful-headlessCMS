@@ -21,23 +21,38 @@ export default async function Products() {
   console.log(product);
 
   return (
-    <div className="bg-slate-600 grid grid-cols-4">
+    <div className="bg-slate-600 grid grid-cols-4 h-screen">
       {product.items.map((e) => (
-        <div className="bg-white m-4 p-4" key={e.sys.id}>
-          <Image
-            src={e.fields.image}
-            alt="shirt pic"
-            width={200}
-            height={200}
-          />
+        <div className="bg-white m-4 p-4 h-[480px]" key={e.sys.id}>
+          {product.includes.Asset.map((elem) => (
+            <div key={e.fields.image.sys.id}>
+              {/* If the IDs of items.image.id % include.Asset.sys.id match then print that particular image*/}
+              {e.fields.image.sys.id == elem.sys.id ? (
+                <Image
+                  src={"https:" + elem.fields.file.url}
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="h-44"
+                />
+              ) : (
+                ""
+              )}
+            </div>
+          ))}
           <h1 className="text-2xl font-semibold">{e.fields.title}</h1>
           <p className="text-gray-500 text-sm font-normal">
             {/* To call the rich we must have to install the following react packege */}
-            {/* Other will not work */}
+            {/* Otherwise it  will not work */}
             {documentToReactComponents(e.fields.descriptions)}
+            <h2 className="text-lg font-medium text-slate-800">
+              Size: {e.fields.size}
+            </h2>
+            <h2 className="text-lg font-medium">PKR {e.fields.price}</h2>
           </p>
-          <h2 className="text-lg font-medium">PKR {e.fields.price}</h2>
-          <button>Add to Cart</button>
+          <button className="border rounded-md px-4 py-2 bg-slate-500 font-semibold mt-3">
+            Add to Cart
+          </button>
         </div>
       ))}
     </div>
