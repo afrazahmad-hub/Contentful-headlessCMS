@@ -42,7 +42,7 @@ export default async function Products() {
           ))}
           <h1 className="text-2xl font-semibold">{e.fields.title}</h1>
           <p className="text-gray-500 text-sm font-normal">
-            {/* To call the rich we must have to install the following react packege */}
+            {/* To call the rich-text we must have to install the following react packege */}
             {/* Otherwise it  will not work */}
             {documentToReactComponents(e.fields.descriptions)}
             <h2 className="text-lg font-medium text-slate-800">
