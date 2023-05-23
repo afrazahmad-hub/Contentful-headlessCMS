@@ -2,10 +2,6 @@
 
 # dependencies
 /node_modules
-/01_contentfull-biryani-racipe-app/node_modules
-/01_contentfull-biryani-racipe-app/.next
-/01_contentfull-biryani-racipe-app/.vercel
-
 /.pnp
 .pnp.js
 
